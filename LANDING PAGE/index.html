@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +55,7 @@
          <div class="box swiper-slide">
             <img src="1.png" alt="">
             <div class="flex">
-               <h3>Especialidad en viajes</h3>
+               <h3 class="animate__animated animate__heartBeat">Especialidad en viajes</h3>
                <a href="#availability" class="btn">¡Reserva ya!</a>
             </div>
          </div>
@@ -63,7 +63,7 @@
          <div class="box swiper-slide">
             <img src="copa.jpg" alt="">
             <div class="flex">
-               <h3>Reclama la diez vos también</h3>
+               <h3 class="animate__animated animate__heartBeat">¡Reclama la diez vos también!</h3>
                <a href="#reservation" class="btn">¡Reserva ya!</a>
             </div>
          </div>
@@ -71,7 +71,7 @@
          <div class="box swiper-slide">
             <img src="futbol.jpg" alt="">
             <div class="flex">
-               <h3> ¡VIVÍ JUNTO A NOSOTROS EL APASIONANTE CAMPEONATO ARGENTINO!</h3>
+               <h3 class="animate__animated animate__heartBeat">¡Viví junto a nosotros el apasionante campeonato Argentino!</h3>
                <a href="#contact" class="btn">¡Reserva ya!</a>
             </div>
          </div>
@@ -262,6 +262,30 @@ src="https://widgets.api-sports.io/2.0.3/widgets.js">
          <input type="number" name="number" required maxlength="10" min="0" max="9999999999" placeholder="indique su número de teléfono" class="box">
          <textarea name="msg" class="box" required maxlength="1000" placeholder="Deje su mensaje" cols="30" rows="10"></textarea>
          <input type="submit" value="Deje su mensaje" name="send" class="btn">
+         
+         <form method="post" onsubmit="return submitUserForm();">
+            <div class="g-recaptcha" data-sitekey="6Lckj0slAAAAAN1RPEpaAkaZW195lzaYaSs3Eu4S" data-callback="verifyCaptcha"></div>
+            <div id="g-recaptcha-error"></div>
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+
+        <script>
+         var recaptcha_response = '';
+         function submitUserForm() {
+             if(recaptcha_response.length == 0) {
+                 document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+                 return false;
+             }
+             return true;
+         }
+          
+         function verifyCaptcha(token) {
+             recaptcha_response = token;
+             document.getElementById('g-recaptcha-error').innerHTML = '';
+         }
+         </script>
+
       </form>
 
       <div class="faq">
@@ -362,13 +386,15 @@ src="https://widgets.api-sports.io/2.0.3/widgets.js">
 
    </div>
 
-   <div class="credit">&copy; copyright @ 2023 Martín Guerzenstein</div>
+   <div class="credit">&copy; copyright @ 2023 Martín Guerzenstein.</div>
 
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="js/script.js"></script>
+
+
 
 </body>
 </html>
